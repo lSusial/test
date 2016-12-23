@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:task="http://www.springframework.org/schema/task"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<context:annotation-config />
+	<context:component-scan base-package="kr.co.homeplus">
+	   <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+
+	<!-- AOP 를 autoproxy 를 통해서 작동시킨다. -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+
+<!--     <bean id="logAdvice" class="kr.co.homeplus.common.util.CommonLogAdvice" />
+
+    <aop:config>
+        <aop:aspect id="logAspect" ref="logAdvice">
+            <aop:before method="beforeLogging" pointcut="execution(public !static * kr.co.homeplus..*Impl.*(..))"/>
+            <aop:after method="afterLogging" pointcut="execution(public !static * kr.co.homeplus..*Impl.*(..))"/>
+        </aop:aspect>
+    </aop:config>
+ -->
+	<import resource="context/resource-context.xml" />
+
+	<bean id="objectMapper" class="org.codehaus.jackson.map.ObjectMapper"/>
+</beans>
