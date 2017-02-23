@@ -1,0 +1,7 @@
+        <div id="dateRange" class="col-xs-4">
+          <div class="input-daterange ">
+            <input type="text" style="width:130px;float:left; border-radius :3px;" class="form-control" name="strDt" value ="${condition.strDt}"/>
+            <div class="dateTilde" style="float:left; margin: 1px 10px;">&nbsp;~&nbsp;</div>
+            <input type="text" style="width:130px;float:left; border-radius :3px;"  class="form-control" name="endDt" value ="${condition.endDt}"/>
+          </div>
+        </div>
