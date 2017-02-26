@@ -11,8 +11,13 @@ hr {margin-top: 10px;margin-bottom: 10px; border: 0; border-top: 1px solid #eee;
 .noti p {line-height: 80%;}
 </style>
 </head>
-<body style="width: 800px;">
-<div style="margin: auto; width: 80%;">
+<body width="800" style="width:800;">
+<!--[if mso]>
+ <center>
+ <table><tr><td width="700">
+<![endif]-->
+ <div style="max-width:700px; margin:0 auto;">
+ 
 <div class="noti" >
 <p style="line-height: 80%;">안녕하세요</p>
 <p style="line-height: 80%;">아래의 NEW SR 업무시스템에 결재 요청이 있습니다. </p>
@@ -22,10 +27,10 @@ hr {margin-top: 10px;margin-bottom: 10px; border: 0; border-top: 1px solid #eee;
 <h3>${title}</h3> 
 <table class="table sr-detail" width="100%" style="border-collapse: collapse;" >
   <tr>
-    <td style="border: solid #dddddd 1.0pt; padding: 5px;" width=" 120px" class="td-head">요청자</td> 
-    <td style="border: solid #dddddd 1.0pt; padding: 5px;" width=" 180px"> ${reqEmpNm} / ${reqEmpDeptNm} </td>
-    <td style="border: solid #dddddd 1.0pt; padding: 5px;" width=" 120px" class="td-head">요청일 </td> 
-    <td style="border: solid #dddddd 1.0pt; padding: 5px;" width=" 180px"> ${crtDttm} </td>
+    <td style="border: solid #dddddd 1.0pt; padding: 5px;" width=" 120" class="td-head">요청자</td> 
+    <td style="border: solid #dddddd 1.0pt; padding: 5px;" width=" 180"> ${reqEmpNm} / ${reqEmpDeptNm} </td>
+    <td style="border: solid #dddddd 1.0pt; padding: 5px;" width=" 120" class="td-head">요청일 </td> 
+    <td style="border: solid #dddddd 1.0pt; padding: 5px;" width=" 180"> ${crtDttm} </td>
   </tr>
   <tr>
     <td style="border: solid #dddddd 1.0pt; padding: 5px;" class="td-head">SR 번호</td> 
@@ -56,6 +61,11 @@ ${desc}
 <p>Send by Homeplus New SR System</p>
 <p>http://nsr.homeplusnet.co.kr</p>
 
-</div>
+ /div>
+<!--[if mso]>
+ </td></tr></table>
+ </center>
+<![endif]--> 
+<div style="margin: auto; width: 80%;">
 </body>
 </html>
