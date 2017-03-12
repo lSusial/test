@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<!-- JNDI를 통해 Tomcat Datasource 참조 -->
+	<bean id="dataSourceSpied" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/comp/env/jdbc/DB2" />
+	</bean>
+
+	<!-- Sql 로깅을 위한 log4j 설정 -->	
+ 	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+        <constructor-arg ref="dataSourceSpied" />
+        <property name="logFormatter">
+            <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+                <property name="loggingType" value="MULTI_LINE" />
+                <property name="sqlPrefix" value="SQL::" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="net.homeplus.offline.common.dev.RefreshableSqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:/sql/mybatisConfig.xml" />
+        <property name="typeAliasesPackage" value="net.homeplus.offline" />
+        <property name="mapperLocations" value="classpath*:/sql/db2/*.xml" />
+    </bean>
+
+    <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+    	<tx:attributes>
+			<tx:method name="select*" read-only="true"/>
+			<tx:method name="insert*"  propagation="REQUIRED"  rollback-for="Exception"/>
+			<tx:method name="delete*"  propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="update*"  propagation="REQUIRED" rollback-for="Exception"/>
+		</tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="requiredTx" expression="execution(* net.homeplus.offline..*.*impl..*Impl.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="requiredTx" />
+    </aop:config>
+	<!-- //GHS -->
+
+    <!-- 애너테이션 기반 트랜잭션 설정 -->
+    <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" />
+    
+
+	<bean id="dataSourceSpied2" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/comp/env/jdbc/RTC" />
+	</bean>
+
+	<!-- Sql 로깅을 위한 log4j 설정 -->	
+ 	<bean id="dataSourceRTC" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+        <constructor-arg ref="dataSourceSpied2" />
+        <property name="logFormatter">
+            <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+                <property name="loggingType" value="MULTI_LINE" />
+                <property name="sqlPrefix" value="SQL::" />
+            </bean>
+        </property>
+    </bean>
+	
+    
+    <bean id="sqlSessionFactoryRTC" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceRTC" />
+        <property name="configLocation" value="classpath:/sql/RTCConfig.xml" />
+        <property name="typeAliasesPackage" value="net.homeplus.offline.intergrate" />
+        <property name="mapperLocations" value="classpath*:/sql/rtc/*.xml" />
+    </bean>
+
+	<bean id="sqlSessionTemplateRTC" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactoryRTC" />
+    </bean>
+
+    <bean id="transactionManagerRTC" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceRTC"/>
+    </bean>
+
+    <tx:advice id="txAdviceRTC" transaction-manager="transactionManagerRTC">
+    	<tx:attributes>
+			<tx:method name="select*" read-only="true"/>
+			<tx:method name="insert*"  propagation="REQUIRED"  rollback-for="Exception"/>
+			<tx:method name="delete*"  propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="update*"  propagation="REQUIRED" rollback-for="Exception"/>
+		</tx:attributes>
+    </tx:advice>
+        
+    
+	<bean id="dataSourceSpied3" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:/comp/env/jdbc/Ticket" />
+	</bean>
+	
+	<bean id="dataSourceTicket" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+        <constructor-arg ref="dataSourceSpied3" />
+        <property name="logFormatter">
+            <bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+                <property name="loggingType" value="MULTI_LINE" />
+                <property name="sqlPrefix" value="SQL::" />
+            </bean>
+        </property>
+    </bean>
+	
+	<bean id="sqlSessionFactoryTicket" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSourceTicket" />
+        <property name="configLocation" value="classpath:/sql/TicketConfig.xml" />
+        <property name="typeAliasesPackage" value="net.homeplus.offline.intergrate" />
+        <property name="mapperLocations" value="classpath*:/sql/ticket/*.xml" />
+    </bean>
+
+	<bean id="sqlSessionTemplateTicket" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactoryTicket" />
+    </bean>
+
+    <bean id="transactionManagerTicket" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSourceTicket"/>
+    </bean>
+
+    <tx:advice id="txAdviceTicket" transaction-manager="transactionManagerTicket">
+    	<tx:attributes>
+			<tx:method name="select*" read-only="true"/>
+			<tx:method name="insert*"  propagation="REQUIRED"  rollback-for="Exception"/>
+			<tx:method name="delete*"  propagation="REQUIRED" rollback-for="Exception"/>
+			<tx:method name="update*"  propagation="REQUIRED" rollback-for="Exception"/>
+		</tx:attributes>
+    </tx:advice>
+    
+    
+</beans>
