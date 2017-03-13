@@ -1,19 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/common/common.jsp" %>
+<script>
+</script>
 
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','Ad_hoc_Report요청서.zip','GMIS Ad-hoc Report요청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','Appl.Center_데이터변경(삭제)요청서_양식.zip','SR 데이터 변경(삭제) 요청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','Appl.Center_데이터추출요청서_양식.zip','SR 데이터 추출 요청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','Appl.Center_시스템변경요청서_양식.zip','SR 시스템 변경 요청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','e-catalog_사용자_등록_신청서.zip','e-Catalog 사용자 등록 신청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','GMIS_Query요청서.zip','GMIS 쿼리문 수정/신청 요청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','IP_Address_신청서-개인.zip','IP Address 신청서-개인',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','IP_Address_신청서-단체.zip','IP Address 신청서-단체',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','ISS ID_신청서작성.zip','ISS ID 신청서작성',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','MSS신청서.zip','MSS ID 사용/변경 신청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','PMS_사용신청서(기본)-090918.zip','PMS ID 신청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','PSS사용자ID_등록요청.zip','PSS 사용신청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','RPM 사용신청서.zip','RPM 요청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','SCS_ID_신청서.zip','SCS ID 신청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','SRIMS작업의뢰서양식.zip','SRIMS 작업 의뢰서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','WEB_BUSINESS_SYSTEM사용신청서.zip','Web Business System사용신청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','강제매가변경방법.zip','강제 매가 변경 신청서',null,null,null,null,null);
-insert into "table"("SR_ID","FILE_NM","ORG_FILE_NM","CRT_ID","CRT_DTTM","LAST_MOD_ID","LAST_MOD_DTTM","FILE_DIR") values ('1','시스템변경요청서.zip','시스템 변경 요청서',null,null,null,null,null);
+<div id="loginView">
+<div class="container">
+    <div class="row">
+    <div class="error-template">
+	    <h1>등록되지 않는 ID 입니다.</h1>
+	    <h2>홈플러스넷을 통해 로그인 해주세요.</h2>
+	    <div class="error-details">
+		계속해서 해당 문제가 발생 할 경우<br>
+		아래 링크를 통해 연락 부탁 드립니다.<br>
+	    </div>
+	    <div class="error-actions">
+		<a href="https://gw.homeplusnet.co.kr" class="btn btn-primary">
+		    <i class="icon-home icon-white"></i> 홈플러스넷 </a>
+		<a href="mailto:hongsh@homeplus.co.kr" class="btn btn-default">
+		    <i class="icon-envelope"></i> Contact Support </a>
+	    </div>
+	</div>
+    </div>
+</div>
+</div>
