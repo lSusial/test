@@ -1,1 +1,5 @@
-<a href="http://nsr.homeplusnet.co.kr/sr/detail.do?srNo=${srNo}" target="_blank"><p>SR 바로가기</p></a>
+AND    APRV_STATUS IN ('INPROGRESS', 'WAITING')
+
+
+
+AND    TAH.APRV_STATUS NOT IN ('WAITING', 'CANCEL', 'CLOSE')
