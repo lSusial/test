@@ -1,5 +1,1 @@
-AND    APRV_STATUS IN ('INPROGRESS', 'WAITING')
-
-
-
-AND    TAH.APRV_STATUS NOT IN ('WAITING', 'CANCEL', 'CLOSE')
+<entry key="sr.template.file">noticeWithSRInfo.ftl</entry>
